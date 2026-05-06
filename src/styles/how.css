@@ -1,0 +1,53 @@
+.how {
+  padding: 10rem 3rem;
+  border-top: 1px solid var(--border);
+  background: var(--white);
+  text-align: center;
+}
+
+.how-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.how-inner h2 {
+  font-size: clamp(3.5rem, 7vw, 6.5rem);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  color: var(--navy);
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+}
+
+.how-inner > p {
+  font-size: 1.2rem;
+  color: var(--ink30);
+  font-weight: 400;
+  margin-bottom: 3rem;
+  letter-spacing: -0.01em;
+}
+
+.how-btn {
+  display: inline-flex;
+  align-items: center;
+  background: var(--navy);
+  color: var(--white);
+  padding: 0.9rem 2rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s;
+  letter-spacing: -0.01em;
+}
+.how-btn:hover {
+  background: var(--blue);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(12,26,58,0.15);
+}
+
+@media (max-width: 680px) {
+  .how { padding: 6rem 1.5rem; }
+  .how-inner h2 { font-size: clamp(2.8rem, 10vw, 4rem); }
+  .how-inner > p { font-size: 1rem; }
+}

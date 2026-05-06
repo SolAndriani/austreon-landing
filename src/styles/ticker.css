@@ -1,0 +1,47 @@
+.ticker-outer {
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--cream);
+  padding: 1.4rem 0;
+  position: relative;
+}
+.ticker-outer::before,
+.ticker-outer::after {
+  content: '';
+  position: absolute; top: 0; bottom: 0;
+  width: 80px; z-index: 2; pointer-events: none;
+}
+.ticker-outer::before { left: 0; background: linear-gradient(to right, var(--cream), transparent); }
+.ticker-outer::after  { right: 0; background: linear-gradient(to left, var(--cream), transparent); }
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 24s linear infinite;
+}
+.ticker-track:hover { animation-play-state: paused; }
+
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0 2.5rem;
+  border-right: 1px solid var(--border2);
+  white-space: nowrap;
+}
+
+.ticker-n {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.ticker-l {
+  font-size: 0.78rem;
+  color: var(--ink30);
+  max-width: 130px;
+  line-height: 1.3;
+}
