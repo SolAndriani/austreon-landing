@@ -3,21 +3,33 @@ import '../styles/how.css'
 
 export default function How() {
   const ref = useRef(null)
+
   useEffect(() => {
-    const o = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) ref.current?.classList.add('in') },
-      { threshold: 0.1 }
+    const observer = new IntersectionObserver(
+      ([entry]) => { 
+        if (entry.isIntersecting) entry.target.classList.add('is-visible') 
+      },
+      { threshold: 0.2 }
     )
-    if (ref.current) o.observe(ref.current)
-    return () => o.disconnect()
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
   }, [])
 
   return (
-    <section className="how" id="como">
-      <div className="how-inner reveal" ref={ref}>
-        <h2>Tu clínica<br />nunca duerme.</h2>
-        <p>Austreon gestiona tu recepción mientras tú descansas.</p>
-        <a href="#cta" className="how-btn">Agendar demo</a>
+    <section className="how-section" id="como">
+      <div className="how-container reveal-on-scroll" ref={ref}>
+        <span className="how-eyebrow">Eficiencia absoluta</span>
+        <h2 className="how-title">
+          Tu atención,<br />
+          en modo experto.
+        </h2>
+        <p className="how-description">
+          Austreon resuelve las consultas y gestiona tu agenda de manera autónoma. 
+          Para que tu única prioridad sea la salud de tus pacientes, sin interrupciones.
+        </p>
+        <div className="how-cta-wrapper">
+          <a href="#cta" className="how-button-primary">Agendar demo</a>
+        </div>
       </div>
     </section>
   )

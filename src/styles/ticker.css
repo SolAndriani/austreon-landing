@@ -1,47 +1,89 @@
-.ticker-outer {
-  overflow: hidden;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: var(--cream);
-  padding: 1.4rem 0;
+.ticker-viewport {
+  --ticker-speed: 30s;
+  --gap: 4rem;
+  
   position: relative;
+  background: #000;
+  padding-block: 2rem; /* Un poco más delgado para mayor elegancia */
+  overflow: hidden;
+  display: flex;
+  
+  /* ELEVAR COMPONENTE */
+  margin-top: -8vh; 
+  z-index: 10;
+  
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
-.ticker-outer::before,
-.ticker-outer::after {
-  content: '';
-  position: absolute; top: 0; bottom: 0;
-  width: 80px; z-index: 2; pointer-events: none;
-}
-.ticker-outer::before { left: 0; background: linear-gradient(to right, var(--cream), transparent); }
-.ticker-outer::after  { right: 0; background: linear-gradient(to left, var(--cream), transparent); }
 
 .ticker-track {
   display: flex;
-  width: max-content;
-  animation: ticker 24s linear infinite;
+  gap: var(--gap);
+  padding-inline: calc(var(--gap) / 2);
+  min-inline-size: 100%;
+  animation: scroll var(--ticker-speed) linear infinite;
+  will-change: transform;
 }
-.ticker-track:hover { animation-play-state: paused; }
 
 .ticker-item {
+  flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0 2.5rem;
-  border-right: 1px solid var(--border2);
+  gap: 1rem;
   white-space: nowrap;
 }
 
 .ticker-n {
   font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--navy);
-  letter-spacing: -0.04em;
-  line-height: 1;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
 }
 
 .ticker-l {
-  font-size: 0.78rem;
-  color: var(--ink30);
-  max-width: 130px;
-  line-height: 1.3;
+  font-size: 0.9rem; /* Un poco más pequeño para jerarquía prolija */
+  font-weight: 500;
+  color: #86868b;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.ticker-fade-left,
+.ticker-fade-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 20%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.ticker-fade-left {
+  left: 0;
+  background: linear-gradient(to right, #000, transparent);
+}
+
+.ticker-fade-right {
+  right: 0;
+  background: linear-gradient(to left, #000, transparent);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(calc(-33.33% - (var(--gap) / 3)), 0, 0);
+  }
+}
+
+.ticker-viewport:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+@media (max-width: 768px) {
+  .ticker-viewport {
+    margin-top: -4vh;
+    padding-block: 1.5rem;
+  }
 }

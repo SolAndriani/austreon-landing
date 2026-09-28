@@ -1,0 +1,44 @@
+.wa-button {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 900; /* debajo del nav (1000) y del modal (1000+), encima del resto */
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wa-button:hover {
+  transform: scale(1.06);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+}
+
+.wa-icon {
+  width: 30px;
+  height: 30px;
+}
+
+@media (max-width: 600px) {
+  .wa-button {
+    right: 16px;
+    bottom: 16px;
+    width: 52px;
+    height: 52px;
+  }
+  .wa-icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wa-button {
+    transition: none;
+  }
+}

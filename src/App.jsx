@@ -1,9 +1,10 @@
-import Nav    from './components/Nav'
-import Hero   from './components/Hero'
-import Ticker from './components/Ticker'
-import How    from './components/How'
-import Cta    from './components/Cta'
-import Footer from './components/Footer'
+import Nav     from './components/Nav'
+import Hero    from './components/Hero'
+import Ticker  from './components/Ticker'
+import Product from './components/Product'
+import Cta     from './components/Cta'
+import Footer  from './components/Footer'
+import WhatsappButton from './components/WhatsappButton'
 
 export default function App() {
   return (
@@ -11,9 +12,10 @@ export default function App() {
       <Nav />
       <Hero />
       <Ticker />
-      <How />
+      <Product />
       <Cta />
       <Footer />
+      <WhatsappButton />
     </div>
   )
 }

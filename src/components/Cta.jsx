@@ -1,77 +1,73 @@
 import { useEffect, useRef, useState } from 'react'
-import '../styles/cta.css'
+import "../styles/cta.css";
 
 export default function Cta() {
-  const ref = useRef(null)
   const [status, setStatus] = useState('')
+  const revealRef = useRef(null)
 
   useEffect(() => {
-    const o = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) ref.current?.classList.add('in') },
-      { threshold: 0.1 }
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) entry.target.classList.add('in')
+      },
+      { threshold: 0.15 }
     )
-    if (ref.current) o.observe(ref.current)
-    return () => o.disconnect()
+    if (revealRef.current) observer.observe(revealRef.current)
+    return () => observer.disconnect()
   }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const form = e.target
-    const data = new FormData(form)
     setStatus('sending')
     try {
       const res = await fetch('https://formspree.io/f/xykojyly', {
         method: 'POST',
-        body: data,
+        body: new FormData(e.target),
         headers: { Accept: 'application/json' }
       })
-      if (res.ok) {
-        setStatus('ok')
-        form.reset()
-      } else {
-        setStatus('error')
-      }
+      setStatus(res.ok ? 'ok' : 'error')
     } catch {
       setStatus('error')
     }
   }
 
   return (
-    <section className="cta" id="cta">
-      <div className="cta-inner reveal" ref={ref}>
-        <div className="cta-left">
-          <h2>¿Tu clínica sigue perdiendo pacientes después de horario?</h2>
-          <p>Completa el formulario y te contactamos en menos de 24 horas para mostrarte el sistema en acción.</p>
-        </div>
-        <div className="cta-right">
+    <section className="cta-viewport" id="cta">
+      <div className="cta-container reveal" ref={revealRef}>
+        <header className="cta-header">
+          <h2 className="cta-headline">Empieza hoy.</h2>
+          <p className="cta-subheadline">
+            Únete a las clínicas que ya transformaron su atención con Austreon.
+          </p>
+        </header>
+
+        <div className="cta-card">
           {status === 'ok' ? (
             <div className="cta-success">
               <span className="success-icon">✓</span>
-              <h3>Mensaje recibido</h3>
-              <p>Nos pondremos en contacto contigo en menos de 24 horas.</p>
+              <h3>Solicitud recibida.</h3>
+              <p>Te contactaremos pronto para coordinar tu demo.</p>
             </div>
           ) : (
             <form className="cta-form" onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label>Nombre</label>
-                <input type="text" name="nombre" placeholder="Dr. Carlos Muñoz" required />
+              <div className="input-group">
+                <input type="text" name="nombre" placeholder="Nombre completo" required />
               </div>
-              <div className="form-group">
-                <label>Clínica</label>
-                <input type="text" name="clinica" placeholder="Clínica Dental Las Condes" required />
+              <div className="input-group">
+                <input type="email" name="email" placeholder="Correo profesional" required />
               </div>
-              <div className="form-group">
-                <label>Email</label>
-                <input type="email" name="email" placeholder="carlos@clinica.cl" required />
-              </div>
-              <div className="form-group">
-                <label>WhatsApp</label>
-                <input type="tel" name="whatsapp" placeholder="+56 9 8765 4321" />
-              </div>
-              <button type="submit" className="cta-submit" disabled={status === 'sending'}>
-                {status === 'sending' ? 'Enviando...' : 'Solicitar demo'}
+              
+              <button 
+                type="submit" 
+                className={`cta-button ${status === 'sending' ? 'loading' : ''}`}
+                disabled={status === 'sending'}
+              >
+                <span className="btn-text">Agendar demo</span>
               </button>
-              {status === 'error' && <p className="form-error">Hubo un error. Inténtalo de nuevo.</p>}
+
+              {status === 'error' && (
+                <p className="cta-error">Ocurrió un error. Inténtalo de nuevo.</p>
+              )}
             </form>
           )}
         </div>

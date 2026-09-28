@@ -1,53 +1,84 @@
-.how {
-  padding: 10rem 3rem;
-  border-top: 1px solid var(--border);
-  background: var(--white);
+.how-section {
+  padding: 12rem 2rem;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.how-container {
+  max-width: 980px;
   text-align: center;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.9s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-.how-inner {
-  max-width: 800px;
-  margin: 0 auto;
+.how-container.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.how-inner h2 {
-  font-size: clamp(3.5rem, 7vw, 6.5rem);
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  color: var(--navy);
-  line-height: 1.05;
-  margin-bottom: 1.5rem;
+.how-eyebrow {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #86868b;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.1em;
 }
 
-.how-inner > p {
-  font-size: 1.2rem;
-  color: var(--ink30);
-  font-weight: 400;
-  margin-bottom: 3rem;
-  letter-spacing: -0.01em;
-}
-
-.how-btn {
-  display: inline-flex;
-  align-items: center;
-  background: var(--navy);
-  color: var(--white);
-  padding: 0.9rem 2rem;
-  border-radius: 8px;
-  font-size: 0.9rem;
+.how-title {
+  font-size: clamp(3.2rem, 8vw, 6rem);
   font-weight: 700;
-  text-decoration: none;
-  transition: all 0.2s;
-  letter-spacing: -0.01em;
-}
-.how-btn:hover {
-  background: var(--blue);
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(12,26,58,0.15);
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+  color: #1d1d1f;
+  margin-bottom: 2.5rem;
 }
 
-@media (max-width: 680px) {
-  .how { padding: 6rem 1.5rem; }
-  .how-inner h2 { font-size: clamp(2.8rem, 10vw, 4rem); }
-  .how-inner > p { font-size: 1rem; }
+.how-description {
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  line-height: 1.6;
+  color: #424245;
+  font-weight: 400;
+  max-width: 650px;
+  margin: 0 auto 4rem;
+  letter-spacing: -0.01em;
+}
+
+.how-button-primary {
+  display: inline-block;
+  background: #0071e3;
+  color: #ffffff;
+  padding: 1.2rem 2.8rem;
+  border-radius: 980px;
+  font-size: 1.15rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 113, 227, 0.15);
+}
+
+.how-button-primary:hover {
+  background: #0077ed;
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(0, 113, 227, 0.25);
+}
+
+@media (max-width: 734px) {
+  .how-section {
+    padding: 8rem 1.5rem;
+  }
+  .desktop-only {
+    display: none;
+  }
+  .how-title {
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .how-description {
+    margin-bottom: 3rem;
+  }
 }

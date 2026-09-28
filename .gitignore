@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Documentos y builds sueltos, no van en el repo
+*.docx
+*.zip

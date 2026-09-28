@@ -1,30 +1,34 @@
-import '../styles/hero.css'
+import React from 'react';
+import '../styles/hero.css';
 
-export default function Hero() {
+const Hero = () => {
   return (
-    <section className="hero">
-      <div className="hero-bg">
-        <img src="/hero-img.jpg" alt="" className="hero-bg-img" />
-        <div className="hero-overlay" />
+    <section className="hero-viewport" aria-labelledby="hero-heading">
+      <div className="hero-asset-container" aria-hidden="true">
+        <img 
+          src="/hero-img.jpg" 
+          alt="Austreon" 
+          className="hero-media"
+          loading="eager"
+        />
+        <div className="hero-scrim" />
       </div>
-      <div className="hero-content">
-        <div className="hero-text">
-          <div className="hero-tag">Recepción dental con inteligencia artificial</div>
-          <h1>
-            Tu clínica nunca<br />
-            deja de<br />
-            <span>responder.</span>
+      
+      <div className="hero-layout">
+        <div className="hero-content">
+          <p className="hero-eyebrow">El futuro de la odontología</p>
+          
+          <h1 id="hero-heading" className="hero-headline">
+            Tu clínica.<br />Siempre disponible.
           </h1>
-          <p>
-            Austreon gestiona tu recepción con IA. Clasifica urgencias,
-            responde pacientes y organiza tu agenda antes de que
-            llegues al consultorio.
+          
+          <p className="hero-subline">
+            Austreon. La inteligencia que organiza tu clínica.
           </p>
-          <a className="hero-btn-main" href="#cta">
-            Agendar demo
-          </a>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
+
+export default Hero;

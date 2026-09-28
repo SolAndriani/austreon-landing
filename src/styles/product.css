@@ -1,0 +1,177 @@
+.product-viewport {
+  --color-bg: #f5f5f7;
+  --color-text: #1d1d1f;
+  --color-secondary: #86868b;
+  --color-accent: #0071e3;
+  --apple-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  background-color: var(--color-bg);
+  padding-block: clamp(6rem, 10vh, 10rem);
+  overflow: hidden;
+}
+
+.product-container {
+  max-inline-size: 1060px;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  padding-inline: 2rem;
+
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s var(--apple-ease), transform 1s var(--apple-ease);
+}
+
+.product-container.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.product-eyebrow {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  margin-block-end: 0.8rem;
+}
+
+.product-headline {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-block-end: 1.5rem;
+  text-wrap: balance;
+}
+
+.product-body {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: var(--color-secondary);
+  max-inline-size: 35ch;
+}
+
+/* Chat iPhone Style */
+.iphone-frame {
+  background: #ffffff;
+  border-radius: 2rem;
+  padding: 1rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  border: 6px solid #e8e8ed;
+}
+
+.chat-ui {
+  font-family: -apple-system, sans-serif;
+  background: #fdfdfd;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-block-end: 1rem;
+  border-bottom: 1px solid #f2f2f7;
+}
+
+.chat-avatar {
+  width: 32px;
+  height: 32px;
+  background: var(--color-text);
+  color: white;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.chat-target {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.chat-status {
+  font-size: 0.75rem;
+  color: #34c759;
+}
+
+.chat-window {
+  padding-block-start: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.bubble {
+  max-inline-size: 85%;
+  padding: 0.7rem 0.9rem;
+  border-radius: 1.2rem;
+  font-size: 0.88rem;
+  line-height: 1.3;
+}
+
+.bubble.out {
+  align-self: flex-end;
+  background: #e9e9eb;
+  color: black;
+}
+
+.bubble.in {
+  align-self: flex-start;
+  background: var(--color-accent);
+  color: white;
+}
+
+.bubble.in-accent {
+  align-self: flex-start;
+  font-style: italic;
+  color: var(--color-secondary);
+  font-size: 0.82rem;
+}
+
+.bubble.in-confirm {
+  align-self: flex-start;
+  background: #34c759;
+  color: white;
+  font-weight: 600;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .product-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 2.5rem;
+  }
+
+  .product-headline {
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+  }
+
+  .product-body {
+    margin-inline: auto;
+    font-size: 1rem;
+  }
+
+  .product-visual {
+    max-inline-size: 280px;
+    margin-inline: auto;
+  }
+
+  .bubble {
+    font-size: 0.82rem;
+    padding: 0.6rem 0.8rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .product-visual {
+    max-inline-size: 240px;
+  }
+
+  .bubble {
+    font-size: 0.78rem;
+  }
+}
