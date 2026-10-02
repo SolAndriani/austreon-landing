@@ -10,8 +10,8 @@ export default function WhatsappButton() {
   return (
     <div className="wa-wrap">
       <div className="wa-tooltip">
-        <p className="wa-tooltip-title">¿Necesitás ayuda?</p>
-        <p className="wa-tooltip-sub">Escribinos por WhatsApp</p>
+        <p className="wa-tooltip-title">¿Necesitas ayuda?</p>
+        <p className="wa-tooltip-sub">Escríbenos por WhatsApp</p>
         <span className="wa-tooltip-arrow" />
       </div>
       <a

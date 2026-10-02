@@ -7,7 +7,7 @@ export default function Modal({ type, onClose }) {
       body: (
         <>
           <p><strong>Última actualización:</strong> Mayo 2026</p>
-          <p>Austreon opera bajo la legislación chilena, en particular la Ley N° 19.628 sobre Protección de la Vida Privada. Esta política describe cómo recopilamos, usamos y protegemos la información personal de quienes interactúan con nuestra plataforma.</p>
+          <p>Austreon opera bajo la legislación chilena de protección de datos personales: la Ley N° 19.628 sobre Protección de la Vida Privada y la Ley N° 21.719, que la reemplaza a partir del 1 de diciembre de 2026 y a cuyos estándares ya adecuamos nuestros procesos. Esta política describe cómo recopilamos, usamos y protegemos la información personal de quienes interactúan con nuestra plataforma.</p>
           <h3>1. Información que recopilamos</h3>
           <p>Al agendar una consulta podemos recopilar nombre completo, número de teléfono, correo electrónico, motivo de consulta y cualquier información adicional que el paciente proporcione voluntariamente.</p>
           <h3>2. Finalidad del tratamiento</h3>
@@ -15,7 +15,7 @@ export default function Modal({ type, onClose }) {
           <h3>3. Almacenamiento y seguridad</h3>
           <p>La información se almacena en servidores seguros con acceso restringido e implementamos medidas técnicas para proteger los datos contra accesos no autorizados.</p>
           <h3>4. Derechos del titular</h3>
-          <p>Conforme a la Ley 19.628, toda persona tiene derecho a acceder, rectificar, cancelar u oponerse al tratamiento de sus datos. Para ejercer estos derechos escríbenos a <a href="mailto:soporte@austreon.cl">soporte@austreon.cl</a>.</p>
+          <p>Conforme a la normativa vigente, toda persona tiene derecho a acceder, rectificar, cancelar u oponerse al tratamiento de sus datos. Para ejercer estos derechos escríbenos a <a href="mailto:soporte@austreon.cl">soporte@austreon.cl</a>.</p>
         </>
       )
     },
